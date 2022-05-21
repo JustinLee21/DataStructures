@@ -30,13 +30,18 @@ public class LinkedList {
 	public static void main(String ...args) {
 		LinkedList myLinkedList = new LinkedList(4); 
 		myLinkedList.appendToTail(21);
-		myLinkedList.appendToTail(1);
-		myLinkedList.appendToTail(51);
+//		myLinkedList.appendToTail(1);
+//		myLinkedList.appendToTail(51);
 		myLinkedList.prepend(701);
 		myLinkedList.printList(); 
 		myLinkedList.printHead();
 		myLinkedList.printTail();
 		myLinkedList.printLength();
+		
+		System.out.println(myLinkedList.removeFirst().value); 
+		System.out.println(myLinkedList.removeFirst().value);
+		System.out.println(myLinkedList.removeFirst().value);
+		System.out.println(myLinkedList.removeFirst());
 		
 		
 		
@@ -109,7 +114,9 @@ public class LinkedList {
 		Node firstNode = null; 
 		if(this.head == null) {
 			System.out.println("Cannot remove as there are no nodes in this object"); 
+			return null; 
 		}else if(this.length == 1) {
+			firstNode = this.head; 
 			this.head = null; 
 			this.tail = null; 
 			this.length--; 
@@ -122,12 +129,12 @@ public class LinkedList {
 		return firstNode; 
 	}
 	
-	public int get(int index) {
+	public Integer get(int index) {
 		if(index > this.length || index <= 0) {
 			System.out.println("This request is out of bounds"); 
-			return 0; 
+			return null; 
 		}else {
-			int counter = 1; 
+			int counter = 0; 
 			Node identify = this.head; 
 			while(counter != index) {
 				identify = identify.next; 
