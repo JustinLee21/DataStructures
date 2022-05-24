@@ -38,11 +38,21 @@ public class LinkedList {
 		myLinkedList.printTail();
 		myLinkedList.printLength();
 		
-		System.out.println(myLinkedList.removeFirst().value); 
-		System.out.println(myLinkedList.removeFirst().value);
-		System.out.println(myLinkedList.removeFirst().value);
-		System.out.println(myLinkedList.removeFirst());
-		
+//		System.out.println(myLinkedList.removeFirst().value); 
+//		System.out.println(myLinkedList.removeFirst().value);
+//		System.out.println(myLinkedList.removeFirst().value);
+		System.out.println(myLinkedList.get(1).value);  
+		System.out.println(myLinkedList.get(2).value);  
+		System.out.println(myLinkedList.get(myLinkedList.length-1).next);   
+		myLinkedList.printList(); 
+		System.out.println(); 
+//		myLinkedList.insert(-1, 25); 
+		myLinkedList.insert(2, 22); 
+		myLinkedList.printList();
+		myLinkedList.set(1, 255); 
+		System.out.println(); 
+		myLinkedList.printList(); 
+	
 		
 		
 	}
@@ -129,8 +139,8 @@ public class LinkedList {
 		return firstNode; 
 	}
 	
-	public Integer get(int index) {
-		if(index > this.length || index <= 0) {
+	public Node get(int index) {
+		if(index > this.length || index < 0) {
 			System.out.println("This request is out of bounds"); 
 			return null; 
 		}else {
@@ -140,9 +150,45 @@ public class LinkedList {
 				identify = identify.next; 
 				counter++; 
 			}
-			return identify.value; 
+			return identify; 
 		}
 	}
+	
+	public boolean insert (int index, int value) {
+		if(index < 0 || index > this.length) throw new NullPointerException("This is not a reasonable value! Cannot < 0 || > .length");  
+		Node node = new Node(value); 
+		if(index == 0) {
+			node.next = this.head; 
+			this.head = node; 
+		}
+		Node forward = this.head; 
+		Node behind = this.get(index-1); 
+		int counter = 0; 
+		while (counter != index) {
+			forward = forward.next; 
+			++counter; 
+		}
+		behind.next = node; 
+		node.next = forward; 
+		return true; 
+		
+	}
+	
+	public boolean set(int index, int value) {
+		if(index < 0 || index > this.length) throw new NullPointerException("Out of bounds!!"); 
+		Node pointer = this.head; 
+		int counter = 0; 
+		while(index != counter) {
+			pointer = pointer.next; 
+			counter++; 
+		}
+		pointer.value = value; 
+		return true; 
+		
+	}
+	
+	
+	
 	
 
 }
