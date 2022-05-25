@@ -1,4 +1,4 @@
-package DataStructures;
+package linkedlList;
 
 public class LinkedList {
 	private Node head; 
@@ -52,7 +52,13 @@ public class LinkedList {
 		myLinkedList.set(1, 255); 
 		System.out.println(); 
 		myLinkedList.printList(); 
-	
+//		myLinkedList.remove(myLinkedList.length-1); 
+		System.out.println(); 
+		myLinkedList.appendToTail(44);
+		myLinkedList.printList(); 
+		System.out.println(); 
+		myLinkedList.reverse();
+		myLinkedList.printList(); 
 		
 		
 	}
@@ -184,6 +190,40 @@ public class LinkedList {
 		}
 		pointer.value = value; 
 		return true; 
+		
+	}
+	
+	public Node remove(int index) {
+		if(index < 0 || index > this.length) throw new NullPointerException("Out of bounds!"); 
+		Node pointer = this.head; 
+		if(index == 0) {
+			this.head = pointer.next; 
+			return pointer; 
+		}
+		int counter = 0; 
+		while(index != counter) {
+			pointer = pointer.next; 
+			++counter; 
+		}
+		Node priorNode = this.get(index-1); 
+		priorNode.next = pointer.next; 
+		pointer.next = null; 
+		return pointer;
+	}
+	
+	public void reverse() {
+		if(this.head == this.tail) System.out.println("There is only one node in linked list"); 
+		Node temp = this.head; 
+		this.head = this.tail; 
+		this.tail = temp; 
+		Node before = null; 
+		Node after = temp.next; 
+		for(int i = 0; i <= this.length; i++) {
+			after = temp.next; 
+			temp.next = before; 
+			before = temp; 
+			temp = after; 
+		}
 		
 	}
 	
