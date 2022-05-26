@@ -25,7 +25,7 @@ public class DoublyLinkedList {
 	public void printList() {
 		Node temp = this.head; 
 		while(temp != null) {
-			System.out.println("<-"+temp.value + "->"); 
+			System.out.print("<-"+temp.value + "->"); 
 			temp = temp.next; 
 		}
 	}
@@ -42,7 +42,61 @@ public class DoublyLinkedList {
 		System.out.println("Length of Doubly Linked List: "+ this.length); 
 	}
 	
+	public void append(int value) {
+		Node newNode = new Node(value); 
+		if(this.head == null) {
+			this.head = newNode; 
+			this.tail = newNode; 
+		}else {
+			this.tail.next = newNode; 
+			newNode.previous = this.tail; 
+			this.tail = newNode; 
+		}
+		length++; 
+	}
+	
+	public Node removeLastNode() {
+		if(this.head == null) throw new NullPointerException("Cannot return empty DLL"); 
+			Node temp = this.tail; 
+			this.tail = this.tail.previous; 
+			this.tail.next = null; 
+			temp.previous = null; 
+			this.length--; 
+			//As a result of above 5 above lines trigger the length to zero. 
+			if(this.length == 0) {
+				this.head = null; 
+				this.tail = null; 
+			}
+			return temp; 
+	}
+	
+	public void prepend(int value) {
+		Node newNode = new Node(value); 
+		if(this.head == null) {
+			this.head = newNode; 
+			this.tail = newNode; 
+		}else {
+			this.head.previous = newNode; 
+			newNode.next = this.head; 
+			this.head = newNode; 
+		}
+		this.length++; 
+	}
+	
+	public Node removeFirst() {
+		if(this.length == 0) throw new NullPointerException("No available nodes to remove"); 
+		Node pointer = this.head; 
+		if(this.length == 1) {
+			this.head = null; 
+			this.tail = null;  
+		}else {
+			this.head = this.head.next; 
+			this.head.previous = null; 
+			pointer.next = null; 
+		}
+		this.length--; 
+		return pointer; 
+	}
 	
 	
-
 }
