@@ -21,6 +21,21 @@ public class Main {
 		myDoubly.printList();
 		System.out.println(); 
 		System.out.println(myDoubly.getNode(0).value); 
+		myDoubly.getLength(); 
+		myDoubly.append(4); 
+		myDoubly.append(4); 
+		myDoubly.append(4); 
+		System.out.println(myDoubly.set(1, 21)); 
+		myDoubly.getLength(); 
+		myDoubly.printList(); 
+		myDoubly.insert(3, 9); 
+		System.out.println(); 
+		myDoubly.printList(); 
+		System.out.println(); 
+		myDoubly.printList();
+		System.out.println();
+		System.out.println(myDoubly.remove(4).value);  
+		myDoubly.printList(); 
 	
 
 	}
