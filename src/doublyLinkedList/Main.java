@@ -19,6 +19,8 @@ public class Main {
 		System.out.println(); 
 		myDoubly.removeFirst(); 
 		myDoubly.printList();
+		System.out.println(); 
+		System.out.println(myDoubly.getNode(0).value); 
 	
 
 	}

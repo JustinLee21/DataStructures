@@ -98,5 +98,29 @@ public class DoublyLinkedList {
 		return pointer; 
 	}
 	
+	public Node getNode(int index) {
+		if(this.length == 0) throw new NullPointerException("Cannot find an index of a blank object"); 
+		Node pointer = this.head; 
+		int counter; 
+		if(this.length == 1) {
+			return this.head; 
+		}
+		if(index < (this.length/2)) {
+			counter = 0; 
+			while(counter != index) {
+				pointer = pointer.next; 
+				counter++; 
+			}
+		}else {
+			counter = this.length-1; 
+			pointer = this.tail; 
+				while(index != counter)
+					pointer = pointer.previous; 
+					counter--; 
+		}
+		
+		return pointer; 
+	}
+	
 	
 }
